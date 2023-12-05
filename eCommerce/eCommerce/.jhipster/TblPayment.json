@@ -1,0 +1,35 @@
+{
+  "name": "TblPayment",
+  "fields": [
+    {
+      "fieldName": "channel",
+      "fieldType": "PaymentChannel",
+      "fieldValues": "PAYPAL,STRIPE,GLOBALPAYMENTS"
+    },
+    {
+      "fieldName": "method",
+      "fieldType": "PaymentMethod",
+      "fieldValues": "CREDITCARD,APPLEPAY,GOOGLEPAY"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblOrder",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "order",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "tbl_payment",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121231002"
+}

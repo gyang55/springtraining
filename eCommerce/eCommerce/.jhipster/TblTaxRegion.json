@@ -1,0 +1,46 @@
+{
+  "name": "TblTaxRegion",
+  "fields": [
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "taxType",
+      "fieldType": "TaxType",
+      "fieldValues": "CAHST,CAPST,CAGST,CAQST,USSTT,USLT",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblTaxExempt",
+      "otherEntityRelationshipName": "region",
+      "relationshipName": "taxExempt",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "tbl_tax_region",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121230959"
+}

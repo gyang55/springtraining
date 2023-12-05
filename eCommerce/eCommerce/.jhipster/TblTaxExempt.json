@@ -1,0 +1,44 @@
+{
+  "name": "TblTaxExempt",
+  "fields": [
+    {
+      "fieldName": "exemptNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "effectiveStartDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "effectiveEndDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblTaxRegion",
+      "otherEntityRelationshipName": "taxExempt",
+      "relationshipName": "region",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tblCustomer",
+      "otherEntityRelationshipName": "taxExempts",
+      "relationshipName": "customer"
+    }
+  ],
+  "entityTableName": "tbl_tax_exempt",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121231000"
+}

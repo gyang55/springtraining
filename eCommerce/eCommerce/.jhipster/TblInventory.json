@@ -1,0 +1,64 @@
+{
+  "name": "TblInventory",
+  "fields": [
+    {
+      "fieldName": "sku",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "sotckLevel",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblDimension",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipValidateRules": "required",
+      "relationshipName": "dimension",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tblInventoryMedia",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "media"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tblProduct",
+      "otherEntityRelationshipName": "inventory",
+      "relationshipName": "products"
+    }
+  ],
+  "entityTableName": "tbl_inventory",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121230956"
+}

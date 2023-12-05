@@ -1,0 +1,46 @@
+{
+  "name": "TblCustomer",
+  "fields": [
+    {
+      "fieldName": "status",
+      "fieldType": "CustomerStatus",
+      "fieldValues": "ACTIVE,INACTIVE,LOCKED"
+    },
+    {
+      "fieldName": "totalSpend",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "tblCustomer",
+      "relationshipName": "user",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tblTaxExempt",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "taxExempts"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tblContact",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "contacts"
+    }
+  ],
+  "entityTableName": "tbl_customer",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121230953"
+}

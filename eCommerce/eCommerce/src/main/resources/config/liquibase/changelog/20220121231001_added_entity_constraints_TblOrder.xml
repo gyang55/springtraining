@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity TblOrder.
+    -->
+    <changeSet id="20220121231001-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="payment_id"
+                                 baseTableName="tbl_order"
+                                 constraintName="fk_tbl_order__payment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tbl_payment"/>
+
+        <addForeignKeyConstraint baseColumnNames="ship_to_id"
+                                 baseTableName="tbl_order"
+                                 constraintName="fk_tbl_order__ship_to_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tbl_contact"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_id"
+                                 baseTableName="tbl_order"
+                                 constraintName="fk_tbl_order__customer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tbl_customer"/>
+    </changeSet>
+</databaseChangeLog>

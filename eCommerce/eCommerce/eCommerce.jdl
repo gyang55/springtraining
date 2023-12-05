@@ -1,0 +1,200 @@
+enum TaxType
+{
+    CAHST
+    CAPST
+    CAGST
+    CAQST
+    USSTT
+    USLT
+}
+
+enum InventoryMediaType
+{
+	IMAGE
+    VIDEO
+    AUDIO
+}
+
+enum CustomerStatus
+{
+	ACTIVE
+    INACTIVE
+    LOCKED
+}
+
+enum PaymentMethod
+{
+	CREDITCARD
+    APPLEPAY
+    GOOGLEPAY
+}
+
+enum PaymentChannel
+{
+	PAYPAL
+    STRIPE
+    GLOBALPAYMENTS
+}
+
+enum OrderStatus
+{
+	DRAFT
+    PROCESSING
+    COMPLETED
+    FAILED
+}
+
+enum PaymentStatus
+{
+	PENDING
+    COMPLETED
+    FAILED
+}
+
+enum ContactType
+{
+	CUSTOMER
+    SHIPPING
+}
+
+enum Currency
+{
+	CAD
+    USD
+}
+
+entity TblContact
+{
+    firstName String
+    lastName String
+    middleName String
+    businessName String
+    phone String
+    email String
+    isActive Boolean required
+    type ContactType required
+    remark TextBlob
+}
+
+entity TblAddress
+{
+	unit String
+    address1 String required
+    address2 String
+    city String required
+    state String required
+    postalCode String required
+    country String required
+    isActive Boolean required
+    remark TextBlob
+}
+
+entity TblCustomer
+{
+	status CustomerStatus
+    totalSpend Long
+}
+
+entity TblProduct
+{
+	displayName String
+    currency Currency
+    price Long
+    isActive Boolean
+    remark TextBlob
+}
+
+entity TblItem
+{
+	quantity Long
+    remark TextBlob
+}
+
+entity TblInventory
+{
+	sku String
+    createTime Instant
+    weight Double
+    sotckLevel Long
+    description TextBlob
+    remark TextBlob
+}
+
+entity TblDimension
+{
+    length Double required
+    height Double required
+    width Double required
+}
+
+entity TblInventoryMedia
+{
+	type InventoryMediaType
+    objectId String
+    key String 
+}
+
+entity TblTaxRegion
+{
+    country String required
+    state String required
+    taxType TaxType required
+    value Double required
+}
+
+entity TblTaxExempt
+{
+    exemptNumber String
+    effectiveStartDate Instant required
+    effectiveEndDate Instant
+}
+
+entity TblOrder
+{
+	orderNumber String
+    orderDate String
+    status OrderStatus
+}
+
+entity TblPayment
+{
+	channel PaymentChannel
+	method PaymentMethod
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	TblCustomer{taxExempts} to TblTaxExempt{customer}
+    
+    TblCustomer{contacts} to TblContact{customer}
+    
+    TblInventory{media} to TblInventoryMedia{inventory}
+    TblInventory{products} to TblProduct{inventory}
+    
+    TblOrder{items} to TblItem{order}
+}
+
+relationship ManyToOne {
+	TblOrder{customer} to TblCustomer
+    
+    TblItem{product} to TblProduct
+}
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+	TblTaxExempt{region} to TblTaxRegion{taxExempt}
+    
+    TblInventory{dimension required} to TblDimension{inventory}
+    
+    TblCustomer{user} to User
+    
+    TblAddress{contact} to TblContact{address}
+    
+    TblOrder{payment} to TblPayment{order}
+    TblOrder{shipTo} to TblContact{order}
+}
+
+service * with serviceClass
+paginate * with pagination
+dto * with mapstruct
+filter *

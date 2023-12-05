@@ -1,0 +1,11 @@
+id;display_name;currency;price;is_active;remark
+1;copy generating;USD;21085;false;../fake-data/blob/hipster.txt
+2;Gloves hack;USD;46382;true;../fake-data/blob/hipster.txt
+3;Finland array;CAD;3011;false;../fake-data/blob/hipster.txt
+4;Up-sized Avon;CAD;4113;true;../fake-data/blob/hipster.txt
+5;Saint Salad revolutionary;CAD;13326;true;../fake-data/blob/hipster.txt
+6;deliver Dong;USD;76342;false;../fake-data/blob/hipster.txt
+7;tan Borders Pants;CAD;85730;false;../fake-data/blob/hipster.txt
+8;Loan Pennsylvania Borders;USD;7532;false;../fake-data/blob/hipster.txt
+9;Panama;USD;49153;true;../fake-data/blob/hipster.txt
+10;SCSI;CAD;59389;true;../fake-data/blob/hipster.txt

@@ -1,0 +1,57 @@
+{
+  "name": "TblOrder",
+  "fields": [
+    {
+      "fieldName": "orderNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orderDate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrderStatus",
+      "fieldValues": "DRAFT,PROCESSING,COMPLETED,FAILED"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblPayment",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "payment",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblContact",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "shipTo",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tblItem",
+      "otherEntityRelationshipName": "order",
+      "relationshipName": "items"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tblCustomer",
+      "otherEntityRelationshipName": "tblOrder",
+      "relationshipName": "customer"
+    }
+  ],
+  "entityTableName": "tbl_order",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121231001"
+}

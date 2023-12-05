@@ -1,0 +1,40 @@
+{
+  "name": "TblDimension",
+  "fields": [
+    {
+      "fieldName": "length",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "height",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "width",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tblInventory",
+      "otherEntityRelationshipName": "dimension",
+      "relationshipName": "inventory",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "tbl_dimension",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121230957"
+}

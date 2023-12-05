@@ -1,0 +1,39 @@
+{
+  "name": "TblItem",
+  "fields": [
+    {
+      "fieldName": "quantity",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "remark",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tblProduct",
+      "otherEntityRelationshipName": "tblItem",
+      "relationshipName": "product"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tblOrder",
+      "otherEntityRelationshipName": "items",
+      "relationshipName": "order"
+    }
+  ],
+  "entityTableName": "tbl_item",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "skipClient": true,
+  "changelogDate": "20220121230955"
+}
